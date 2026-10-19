@@ -1050,6 +1050,281 @@ h1, h2, h3, h4 {
   font-size: 0.82rem;
 }
 
+/* --- Banner Destaque de Disciplina (Home) --- */
+.discipline-highlight-banner {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 2rem 2.4rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.discipline-highlight-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dh-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
+  color: var(--text-primary);
+}
+
+.dh-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 700px;
+  margin-bottom: 0.8rem;
+}
+
+.dh-meta {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.dh-action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .discipline-highlight-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* --- Banner de Escopo de Disciplinas --- */
+.academic-scope-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-left: 4px solid var(--highlight);
+  border-radius: var(--radius-sm);
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.scope-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.scope-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--highlight);
+  margin-bottom: 0.35rem;
+}
+
+.scope-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.scope-text strong {
+  color: var(--text-primary);
+}
+
+/* --- Lista de Fichamentos (Tutores Inteligentes) --- */
+.fichamentos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.fichamento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 2.2rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.fichamento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.fichamento-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.fichamento-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.badge-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.fichamento-source {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.fichamento-article-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.fichamento-author {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.1rem;
+}
+
+.abnt-citation {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1.1rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.8rem;
+}
+
+.abnt-citation strong {
+  color: var(--text-primary);
+}
+
+.fichamento-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1.8rem;
+}
+
+.fichamento-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.box-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.6rem;
+}
+
+.resumo-box p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 0.8rem;
+}
+
+.resumo-box p strong {
+  color: var(--text-primary);
+}
+
+.conclusoes-box {
+  background: var(--bg-card);
+}
+
+.reflection-item {
+  margin-bottom: 1rem;
+}
+
+.reflection-item:last-child {
+  margin-bottom: 0;
+}
+
+.item-kicker {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.reflection-item p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.highlight-insight {
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--accent);
+  padding: 0.8rem 1rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-top: 1rem;
+}
+
+.highlight-insight .item-kicker {
+  color: var(--accent);
+}
+
+.highlight-insight p {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .fichamento-body-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- Responsividade --- */
 @media (max-width: 1024px) {
   .academic-cards-grid {
