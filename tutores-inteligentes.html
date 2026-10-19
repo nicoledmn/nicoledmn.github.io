@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutores Inteligentes (PPGI/UFES) | Nicole De Mori Nicolini</title>
+  <meta name="description" content="Fichamentos, resumos e conclusões dos artigos estudados na disciplina de Tutores Inteligentes no PPGI/UFES por Nicole De Mori Nicolini.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='sans-serif' font-weight='bold'>N</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="grid-backdrop" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand">
+        <span class="brand-monogram">N</span>
+        <span class="brand-name">Nicole Nicolini</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegação Principal">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Início / Perfil</a></li>
+          <li><a href="tutores-inteligentes.html" class="nav-link active">Tutores Inteligentes <span class="nav-counter">PPGI</span></a></li>
+          <li><a href="artigos.html" class="nav-link">Artigos</a></li>
+          <li><a href="analises.html" class="nav-link">Análises</a></li>
+          <li><a href="index.html#contato" class="nav-link btn-nav">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Alternar modo escuro / claro">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    
+    <section class="section subpage-hero">
+      <div class="container">
+        
+        <!-- Header da Página -->
+        <div class="section-header">
+          <span class="section-tag">Produção de Disciplina • PPGI / UFES</span>
+          <h1 class="section-title">Tutores Inteligentes</h1>
+          <p class="section-subtitle">
+            Estudos, resumos e reflexões desenvolvidos a partir dos artigos debatidos na disciplina de <strong>Tutores Inteligentes</strong> do Programa de Pós-Graduação em Informática (PPGI/UFES).
+          </p>
+        </div>
+
+        <!-- Banner de Contextualização Curricular -->
+        <div class="academic-scope-banner">
+          <div class="scope-icon">💡</div>
+          <div class="scope-body">
+            <h4 class="scope-title">Nota de Contextualização Curricular</h4>
+            <p class="scope-text">
+              Esta aba e as demais seções de disciplinas reúnem fichamentos, resumos e reflexões elaboradas durante as atividades de pós-graduação. 
+              <strong>Os temas abordados nessas páginas refletem os conteúdos específicos estudados nas disciplinas cursadas e não correspondem necessariamente ao tema central da minha dissertação de mestrado</strong> (intitulada <em>"Desenvolvimento de um assistente para projetos de arquitetura articulando um framework IR-BIM e um modelo de linguagem em um fluxo de trabalho"</em>, desenvolvida no PPGAU/UFES). Trata-se de um registro transparente da interlocução interdisciplinar entre a Arquitetura e a Ciência da Computação.
+            </p>
+          </div>
+        </div>
+
+        <!-- Lista de Fichamentos -->
+        <div class="fichamentos-list">
+
+          <!-- ==========================================
+               FICHAMENTO 01: BRADÁČ ET AL. (2022)
+               ========================================== -->
+          <article class="fichamento-card">
+            <div class="fichamento-header">
+              <div class="fichamento-badges">
+                <span class="badge-tag">Fichamento #01</span>
+                <span class="badge-date">Data: 23/09/2026</span>
+              </div>
+              <span class="fichamento-source">Sistemas Tutores Inteligentes • Moodle • Lógica Fuzzy</span>
+            </div>
+
+            <h2 class="fichamento-article-title">Design of an Intelligent Tutoring System to Create a Personalized Study Plan Using Expert Systems</h2>
+            <p class="fichamento-author"><strong>Autores:</strong> Vladimír Bradáč; Pavel Smolka; Martin Kotyrba; Tomáš Průdek • <em>Applied Sciences</em>, v. 12, n. 12, 6236, 2022</p>
+
+            <div class="abnt-citation">
+              <strong>Referência (ABNT):</strong> BRADÁČ, Vladimír; SMOLKA, Pavel; KOTYRBA, Martin; PRŮDEK, Tomáš. Design of an Intelligent Tutoring System to Create a Personalized Study Plan Using Expert Systems. <em>Applied Sciences</em>, v. 12, n. 12, 6236, 2022. DOI: 10.3390/app12126236.
+            </div>
+
+            <div class="fichamento-body-grid">
+              
+              <!-- Resumo Breve -->
+              <div class="fichamento-box resumo-box">
+                <h3 class="box-heading">
+                  <span class="icon">📄</span> Resumo do Artigo
+                </h3>
+                <p>
+                  O artigo apresenta o desenvolvimento de um Sistema Tutor Inteligente (ITS) concebido dentro do ambiente Moodle, capaz de criar um plano de estudos personalizado considerando as características e o desempenho individual de cada estudante.
+                </p>
+                <p>
+                  O modelo integra a avaliação contínua do aprendizado com a identificação de preferências sensoriais (modelo VARK) e recorre à <strong>lógica fuzzy</strong> para lidar com incertezas e com a natureza gradual do conhecimento, permitindo adaptar o percurso formativo de maneira automatizada e com mínima necessidade de intervenção do tutor.
+                </p>
+                <div class="reflection-item" style="margin-top: 1rem;">
+                  <span class="item-kicker">Aspectos Positivos e Críticos</span>
+                  <p>
+                    <strong>Positivos:</strong> A personalização dinâmica do método de ensino, o acompanhamento longitudinal do estudante e a aplicação de lógica fuzzy para gradações de aprendizado.<br>
+                    <strong>Negativos / Limitações:</strong> A arquitetura de sistemas especialistas engessa a expansão para novos cursos e áreas de conhecimento. A validação restrita a um único contexto (inglês instrumental) não comprova eficácia generalizável. Além disso, a aferição das preferências sensoriais (VARK) por simples questionamento pode divergir do real modo de aprendizado do aluno.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Conclusões do Fichamento -->
+              <div class="fichamento-box conclusoes-box">
+                <h3 class="box-heading">
+                  <span class="icon">✍️</span> Conclusões & Relações com a Pesquisa (Nicole Nicolini)
+                </h3>
+                
+                <div class="reflection-item">
+                  <span class="item-kicker">Ideia Inovadora e Transposição Metodológica</span>
+                  <p>
+                    A lógica de construir regras adaptadas a perfis específicos (no artigo, estudantes; na pesquisa, categorias de projetos arquitetônicos) sugere parâmetros de semelhança. No assistente em desenvolvimento, diretrizes poderão categorizar decisões projetuais registradas em arquivos BIM de um escritório (ex.: projetos de creches), permitindo ao arquiteto resgatar com clareza o histórico decisório ao iniciar um novo projeto.
+                  </p>
+                </div>
+
+                <div class="reflection-item highlight-insight">
+                  <span class="item-kicker">Fundamentação Epistemológica — Bryan Lawson (2011)</span>
+                  <p>
+                    As leituras embasam uma premissa central: <strong>a inteligência artificial e os sistemas computacionais não devem atuar nas etapas de síntese (elaboração) e avaliação (julgamento de qualidade) do projeto de arquitetura</strong>. O raciocínio matemático inerente à máquina é insuficiente e reducionista frente a um projeto arquitetônico, que se configura como um <em>problema pernicioso (wicked problem)</em> composto por exigências contextuais, humanas, formais e arbitrárias.
+                  </p>
+                  <p style="margin-top: 0.5rem;">
+                    Por outro lado, a computação tem papel crucial na etapa de <strong>análise</strong> — caracterizada pela <em>"investigação das relações na busca de algum padrão nas informações disponíveis e a classificação dos objetivos"</em> (LAWSON, 2011, p. 45). É nessa etapa que o assistente proposto atuará: reunindo dados e evidenciando padrões espaciais, mantendo a autoria e as decisões resolutivas sob total responsabilidade do arquiteto.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </article>
+
+
+          <!-- ==========================================
+               FICHAMENTO 02: VAN MELLE / MYCIN (1978)
+               ========================================== -->
+          <article class="fichamento-card">
+            <div class="fichamento-header">
+              <div class="fichamento-badges">
+                <span class="badge-tag">Fichamento #02</span>
+                <span class="badge-date">Data: 29/09/2026</span>
+              </div>
+              <span class="fichamento-source">Sistemas Especialistas • Incerteza • Explicabilidade</span>
+            </div>
+
+            <h2 class="fichamento-article-title">The Structure of the MYCIN System</h2>
+            <p class="fichamento-author"><strong>Autor:</strong> William van Melle • <em>International Journal of Man-Machine Studies</em>, v. 10, p. 313–322, 1978</p>
+
+            <div class="abnt-citation">
+              <strong>Referência (ABNT):</strong> VAN MELLE, William. The Structure of the MYCIN System. Capítulo baseado em: MYCIN: A knowledge-based consultation program for infectious disease diagnosis. <em>International Journal of Man-Machine Studies</em>, v. 10, p. 313–322, 1978.
+            </div>
+
+            <div class="fichamento-body-grid">
+              
+              <!-- Resumo Breve -->
+              <div class="fichamento-box resumo-box">
+                <h3 class="box-heading">
+                  <span class="icon">📄</span> Resumo do Artigo
+                </h3>
+                <p>
+                  O texto apresenta a estrutura e o funcionamento do <strong>MYCIN</strong>, sistema especialista pioneiro desenvolvido para auxiliar médicos no diagnóstico e na terapêutica de infecções graves em situações em que as informações clínicas são incompletas, imprecisas ou incertas.
+                </p>
+                <p>
+                  O artigo detalha a modularidade entre a base de conhecimento (estruturada em regras "Se, Então" e triplas objeto-atributo-valor com fatores de certeza probabilísticos) e o programa de consulta (motor de inferência). Destaca ainda os recursos de <strong>explicabilidade</strong>, que permitem ao sistema responder a comandos <em>HOW</em> e <em>WHY</em>, demonstrando a cadeia dedutiva utilizada para subsidiar o julgamento clínico.
+                </p>
+                <div class="reflection-item" style="margin-top: 1rem;">
+                  <span class="item-kicker">Aspectos Positivos e Críticos</span>
+                  <p>
+                    <strong>Positivos:</strong> Capacidade de processar incertezas e incompletudes por meio de probabilidades; transparência e justificativa das decisões.<br>
+                    <strong>Negativos / Limitações:</strong> Engessamento da base de conhecimento frente a novas atualizações; barreira dialógica entre o médico (detentor do saber especialista) e o programador (responsável pela formalização computacional).
+                  </p>
+                </div>
+              </div>
+
+              <!-- Conclusões do Fichamento -->
+              <div class="fichamento-box conclusoes-box">
+                <h3 class="box-heading">
+                  <span class="icon">✍️</span> Conclusões & Relações com a Pesquisa (Nicole Nicolini)
+                </h3>
+                
+                <div class="reflection-item">
+                  <span class="item-kicker">Fluxo Decisório e Aplicação ao BIM</span>
+                  <p>
+                    A lógica estrutural observada no artigo — <em>informações → avaliação → regras → decisão → nova avaliação → adaptação</em> — inspirou uma transposição para o fluxo de trabalho com modelos BIM:
+                  </p>
+                  <p style="font-family: var(--font-mono); font-size: 0.85rem; background: var(--color-surface-hover); padding: 0.75rem; border-radius: var(--radius-sm); margin-top: 0.5rem; line-height: 1.5;">
+                    Informações (extraídas de arquivos BIM) → Avaliação → Regras → Decisão (identificação e categorização) → Elaboração do novo projeto → Nova avaliação → Sugestões de adaptação.
+                  </p>
+                </div>
+
+                <div class="reflection-item highlight-insight">
+                  <span class="item-kicker">Sistemas Especialistas vs. Modelos de Linguagem (LLMs)</span>
+                  <p>
+                    Surge a reflexão sobre em que medida a arquitetura explícita e modular dos sistemas especialistas pode fornecer pistas para orientar sistemas contemporâneos mais complexos, como os Modelos de Linguagem (LLMs), na interpretação de decisões arquitetônicas. Mantém-se a convicção de que o raciocínio computacional deve ficar restrito à etapa de <strong>análise</strong>, assegurando que síntese e avaliação continuem prerrogativas do autor do projeto.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </article>
+
+
+          <!-- ==========================================
+               FICHAMENTO 03: CLANCEY & LETSINGER / NEOMYCIN (1981/1982)
+               ========================================== -->
+          <article class="fichamento-card">
+            <div class="fichamento-header">
+              <div class="fichamento-badges">
+                <span class="badge-tag">Fichamento #03</span>
+                <span class="badge-date">Data: 30/09/2026</span>
+              </div>
+              <span class="fichamento-source">Modelagem Cognitiva • Ensino Médico • GUIDON</span>
+            </div>
+
+            <h2 class="fichamento-article-title">NEOMYCIN: Reconfiguring A Rule-Based Expert System for Application to Teaching</h2>
+            <p class="fichamento-author"><strong>Autores:</strong> William J. Clancey & Reed Letsinger • <em>IJCAI / Stanford University</em> (1981/1982)</p>
+
+            <div class="abnt-citation">
+              <strong>Referência (ABNT):</strong> CLANCEY, William J.; LETSINGER, Reed. NEOMYCIN: reconfiguring a rule-based expert system for application to teaching. In: <em>Proceedings of the 7th International Joint Conference on Artificial Intelligence</em> - Volume 2. Vancouver, BC, Canada: Morgan Kaufmann Publishers Inc., 1981.
+            </div>
+
+            <div class="fichamento-body-grid">
+              
+              <!-- Resumo Breve -->
+              <div class="fichamento-box resumo-box">
+                <h3 class="box-heading">
+                  <span class="icon">📄</span> Resumo do Artigo
+                </h3>
+                <p>
+                  O artigo apresenta o <strong>NEOMYCIN</strong>, uma reformulação arquitetural do MYCIN concebida para aproximar a estrutura computacional da forma como médicos experientes organizam e aplicam seu conhecimento no raciocínio clínico. O propósito é integrar essa base ao tutor inteligente GUIDON para ensinar estudantes de medicina a diagnosticar.
+                </p>
+                <p>
+                  Os autores demonstram que dispor de regras associativas isoladas não é suficiente para a pedagogia médica: faz-se necessário explicitar regras estratégicas e estruturar o gerenciamento de um espaço de hipóteses, formulando um modelo psicológico de resolução de problemas diagnósticos.
+                </p>
+                <div class="reflection-item" style="margin-top: 1rem;">
+                  <span class="item-kicker">Aspectos Positivos e Críticos</span>
+                  <p>
+                    <strong>Positivos:</strong> Evidencia que possuir a informação não basta para emular um especialista; é imprescindível compreender a estrutura cognitiva estratégica do diagnóstico.<br>
+                    <strong>Negativos / Limitações:</strong> Permanece refém da formalização excessiva do conhecimento humano, correndo o risco de simplificar uma prática fundada em experiência, contexto e julgamento tácito (relação direta com Lawson, 2011). Além disso, o artigo apresenta validações experimentais restritas.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Conclusões do Fichamento -->
+              <div class="fichamento-box conclusoes-box">
+                <h3 class="box-heading">
+                  <span class="icon">✍️</span> Conclusões & Relações com a Pesquisa (Nicole Nicolini)
+                </h3>
+                
+                <div class="reflection-item">
+                  <span class="item-kicker">Diferenciação Cognitiva: Diagnóstico vs. Projeto Arquitetônico</span>
+                  <p>
+                    O raciocínio clínico de diagnóstico é primordialmente pragmático e focado na identificação de uma patologia existente; já o raciocínio do projetista é propositivo e criativo, voltado à geração de novas soluções espaciais. Se na medicina a modelagem do espaço de hipóteses busca convergir para uma resposta precisa, na arquitetura a cognição lida com problemas abertos e com a multiplicidade de respostas possíveis.
+                  </p>
+                </div>
+
+                <div class="reflection-item highlight-insight">
+                  <span class="item-kicker">Instrução de LLMs na Etapa de Análise Projetual</span>
+                  <p>
+                    A partir da reflexão sobre a viabilidade e as estratégias para emular processos cognitivos em sistemas computacionais, surge a proposta: em vez de tentar emular a totalidade do raciocínio do arquiteto, <strong>identificar a estrutura de raciocínio investigativo empregada especificamente na etapa de análise</strong> (busca de padrões em dados e classificação de objetivos) para instruir o modelo de linguagem (LLM) a conduzir essa fase em apoio ao arquiteto.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <p class="footer-brand">Nicole De Mori Nicolini</p>
+        <p class="footer-sub">Arquiteta e Urbanista • Pesquisadora PPGAU/UFES • Conselheira IAB-ES</p>
+      </div>
+
+      <div class="footer-center">
+        <ul class="footer-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="tutores-inteligentes.html">Tutores Inteligentes (PPGI)</a></li>
+          <li><a href="artigos.html">Artigos</a></li>
+          <li><a href="analises.html">Análises</a></li>
+          <li><a href="http://tip.ufes.br/" target="_blank" rel="noopener">Grupo TIP</a></li>
+          <li><a href="http://www.iab-es.org.br" target="_blank" rel="noopener">IAB-ES</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-right">
+        <p class="footer-copy">
+          © <span id="current-year"></span> Nicole De Mori Nicolini • Hospedado no GitHub Pages
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
