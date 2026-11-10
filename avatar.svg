@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" role="img" aria-label="Avatar do Assistente Acadêmico Nicole Nicolini">
+  <defs>
+    <!-- Gradiente de Fundo Noturno/Tecnológico -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0b1329" />
+    </linearGradient>
+
+    <!-- Gradiente de Borda Iluminada (BIM / IA) -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <!-- Gradiente de Destaque Arquitetônico -->
+    <linearGradient id="axonometricGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.1" />
+    </linearGradient>
+
+    <!-- Gradiente da Pele -->
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde68a" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <!-- Gradiente do Cabelo -->
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Gradiente do Blazer/Vestuário Arquitetônico -->
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Brilho do Headset / IA -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Circular com Borda Tecnológica -->
+  <circle cx="60" cy="60" r="58" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="2.5" />
+
+  <!-- Elemento Gráfico de Fundo: Malha Isométrica / Wireframe BIM -->
+  <g stroke="url(#axonometricGrad)" stroke-width="0.8" fill="none">
+    <!-- Cubo Isométrico Sutil (Simbolizando BIM / Arquitetura Digital) -->
+    <polygon points="60,14 86,28 60,42 34,28" />
+    <polyline points="34,28 34,56 60,70 86,56 86,28" />
+    <line x1="60" y1="42" x2="60" y2="70" />
+    <!-- Círculos de Nós de Grafo / Rede Neural -->
+    <circle cx="34" cy="28" r="1.8" fill="#38bdf8" />
+    <circle cx="86" cy="28" r="1.8" fill="#38bdf8" />
+    <circle cx="60" cy="14" r="1.8" fill="#818cf8" />
+    <circle cx="60" cy="42" r="1.8" fill="#f59e0b" />
+  </g>
+
+  <!-- Pescoco & Corpo (Figura da Pesquisadora) -->
+  <g>
+    <!-- Ombros / Blazer -->
+    <path d="M22,116 C24,96 40,86 52,84 L68,84 C80,86 96,96 98,116 Z" fill="url(#suitGrad)" />
+    <!-- Gola do Blazer em Linha Arquitetônica -->
+    <path d="M48,84 L60,102 L72,84 L65,84 L60,94 L55,84 Z" fill="#38bdf8" opacity="0.8" />
+    <path d="M52,84 L60,100 L68,84" stroke="#60a5fa" stroke-width="1.2" fill="none" />
+    <polygon points="56,84 64,84 60,93" fill="#e2e8f0" />
+
+    <!-- Pescoço -->
+    <rect x="53" y="70" width="14" height="17" rx="3" fill="url(#skinGrad)" />
+    <!-- Sombra sutil abaixo do queixo -->
+    <path d="M53,74 C57,78 63,78 67,74 L67,70 L53,70 Z" fill="#d97706" opacity="0.3" />
+
+    <!-- Cabeça e Rosto -->
+    <ellipse cx="60" cy="56" rx="17" ry="20" fill="url(#skinGrad)" />
+
+    <!-- Cabelo - Camada de Fundo (Coque elegante / Moderno) -->
+    <circle cx="60" cy="30" r="12" fill="url(#hairGrad)" />
+    <!-- Cabelo Principal -->
+    <path d="M39,52 C39,36 47,28 60,28 C73,28 81,36 81,52 C81,58 79,64 77,66 C75,56 71,44 60,44 C49,44 45,56 43,66 C41,64 39,58 39,52 Z" fill="url(#hairGrad)" />
+    <!-- Mecha lateral arquitetônica estilizada -->
+    <path d="M43,42 C48,34 60,33 72,40 C68,36 58,35 48,38 Z" fill="#64748b" opacity="0.5" />
+
+    <!-- Óculos de Design Arquitetônico (Geometria Marcante) -->
+    <!-- Lente Esquerda -->
+    <rect x="46" y="50" width="11" height="8" rx="2" fill="#0284c7" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1.4" />
+    <!-- Lente Direita -->
+    <rect x="63" y="50" width="11" height="8" rx="2" fill="#0284c7" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1.4" />
+    <!-- Ponte e Hastes dos Óculos -->
+    <line x1="57" y1="53" x2="63" y2="53" stroke="#38bdf8" stroke-width="1.4" />
+    <line x1="46" y1="53" x2="41" y2="51" stroke="#38bdf8" stroke-width="1.2" />
+    <line x1="74" y1="53" x2="79" y2="51" stroke="#38bdf8" stroke-width="1.2" />
+    <!-- Brilho nas lentes -->
+    <line x1="48" y1="52" x2="51" y2="55" stroke="#ffffff" stroke-width="0.8" opacity="0.8" />
+    <line x1="65" y1="52" x2="68" y2="55" stroke="#ffffff" stroke-width="0.8" opacity="0.8" />
+
+    <!-- Olhos sutis atrás das lentes -->
+    <circle cx="51.5" cy="54" r="1.3" fill="#0f172a" />
+    <circle cx="68.5" cy="54" r="1.3" fill="#0f172a" />
+
+    <!-- Nariz sutil e Boca Sorridente Discreta -->
+    <path d="M59.5,58 L60.5,62 L58.5,63" stroke="#b45309" stroke-width="0.9" fill="none" stroke-linecap="round" />
+    <path d="M56,66.5 Q60,69 64,66.5" stroke="#b45309" stroke-width="1.1" fill="none" stroke-linecap="round" />
+
+    <!-- Headset IA / Microfone Inteligente (Simbolizando Interface de Voz) -->
+    <!-- Arco do headset -->
+    <path d="M41,50 C40,42 43,36 49,32" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    <circle cx="41" cy="52" r="3.5" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+    <!-- Haste do microfone em direção à boca -->
+    <path d="M41,54 Q44,64 53,65" stroke="#38bdf8" stroke-width="1.2" fill="none" stroke-linecap="round" />
+    <!-- Luz indicadora na ponta do mic (Voz Ativa) -->
+    <circle cx="53" cy="65" r="1.5" fill="#38bdf8" filter="url(#glow)" />
+  </g>
+
+  <!-- Ondas Sonoras / Conexão IA Sutis na Lateral -->
+  <g stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.85" stroke-linecap="round">
+    <path d="M96,52 Q99,58 96,64" />
+    <path d="M100,48 Q105,58 100,68" opacity="0.6" />
+    <path d="M104,44 Q111,58 104,72" opacity="0.3" />
+  </g>
+</svg>
