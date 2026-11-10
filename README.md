@@ -16,7 +16,8 @@ nicole-nicolini-site/
 ├── analises.html            # Análises críticas e exercícios
 ├── style.css                # Estilos globais e componentes do chatbot
 ├── main.js                  # Alternância de tema, menu e scripts base
-├── chatbot.js               # Widget de chatbot flutuante presente em todas as páginas
+├── chatbot.js               # Widget de chatbot flutuante com suporte a Voz e Avatar
+├── avatar.svg               # Avatar vetorial temático (Arquitetura + IA + Voz)
 ├── chatbot_app.py           # Aplicativo Python integrado ao LM Studio (CLI e Servidor API)
 └── README.md                # Documentação do projeto
 ```
@@ -54,6 +55,9 @@ Quando visitantes externos acessam `https://nicoledmn.github.io/`, se eles não 
 
 ## 🎨 Principais Recursos
 
+- **Avatar Exclusivo:** Identidade visual inspirada na interlocução entre Arquitetura e Inteligência Artificial, com wireframe BIM e visual moderno.
+- **Comando de Voz (Speech-to-Text):** Permite falar diretamente pelo microfone em português (`pt-BR`) para fazer perguntas de forma natural e sem precisar digitar.
+- **Resposta por Voz (Text-to-Speech):** O assistente fala suas respostas em voz alta em português, com botão de controle de áudio e replay.
 - **Chatbot Flutuante Global:** Presente no canto inferior direito em todas as páginas, integrado ao LM Studio com fallback inteligente.
 - **Perfil Condensado:** Primeira página enxuta, focada diretamente no Mestrado (IR-BIM + LLM), Graduação (TCC Dom João Batista), Laboratório Grupo TIP e IAB-ES.
 - **Páginas de Disciplinas:** Registro transparente de estudos em sala de aula (ex: Tutores Inteligentes no PPGI).
