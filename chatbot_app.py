@@ -45,6 +45,7 @@ Nicole cursou a disciplina no Programa de Pos-Graduacao em Informatica e elaboro
 DIRETRIZES DE RESPOSTA:
 - Responda sempre em portugues claro, formal e academico.
 - Seja objetivo e enfatize o papel da IA como assistente de suporte analitico ao arquiteto, preservando a autoria e a criatividade humana.
+- Como suas respostas podem ser lidas em voz alta por sintese de voz (TTS) no navegador, mantenha frases bem articuladas, com pontuacao natural e sem excesso de marcadores tecnicos cifrados.
 """
 
 
