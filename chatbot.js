@@ -15,43 +15,145 @@
     activeMode: 'auto', // 'auto', 'python', 'lm_studio', 'demo'
   };
 
-  // Base de conhecimento embutida para visitantes do GitHub Pages quando o servidor local não estiver rodando na máquina deles
+  // Base de conhecimento estruturada e detalhada para o assistente
   const KNOWLEDGE_BASE = {
+    // 1. Dúvidas e incompreensões registradas por Nicole nos fichamentos
+    duvidas_fichamentos: {
+      check: (q) => (q.includes('duvida') || q.includes('dúvida') || q.includes('compreendeu') || q.includes('não compreendeu') || q.includes('nao compreendeu') || q.includes('dificuldade') || q.includes('incompreensão') || q.includes('incompreensao') || q.includes('perguntas feitas')) && (q.includes('fichamento') || q.includes('artigo') || q.includes('disciplina') || q.includes('tutores') || q.includes('bradac') || q.includes('bradáč') || q.includes('mycin') || q.includes('neomycin') || q.includes('quais')),
+      reply: 'Em seus fichamentos na disciplina de Tutores Inteligentes (PPGI/UFES), Nicole registrou questionamentos e dúvidas críticas muito pertinentes para cada artigo:\n\n' +
+        '1. **No artigo de Bradáč et al. (2022 - ITS no Moodle):**\n' +
+        'Nicole questionou como na etapa M1B o sistema afere o perfil sensorial (VARK) do aluno: *"Perguntando diretamente? Mas e se o aluno achar que aprende melhor por vídeo, quando na verdade ler e escrever for o mais adequado para ele? Penso que um teste para isso seria mais adequado, mas como formular um teste como esse?"*\n\n' +
+        '2. **No artigo do MYCIN (Van Melle, 1978):**\n' +
+        'A dúvida incidiu sobre o funcionamento íntimo do motor de inferência: *"Se informações diferentes fornecidas pelo paciente apontarem para direções diagnósticas opostas, como o motor lida com isso? É uma soma matemática probabilística que aponta para a maior probabilidade, ou o sistema poderia inferir dois diagnósticos simultâneos completamente diferentes para o mesmo paciente?"*\n\n' +
+        '3. **No artigo do NEOMYCIN (Clancey & Letsinger, 1981):**\n' +
+        'Nicole apontou três inquietações: não ficou claro como a reestruturação da arquitetura em blocos influencia positivamente no raciocínio; como exatamente o sistema seria consumido pelo tutor GUIDON; e, principalmente, por que a pesquisa direcionou o NEOMYCIN apenas ao ensino em vez de mantê-lo como assistente para a prática profissional dos médicos (questionando se houve algum problema mais amplo na aplicação prática de sistemas especialistas).'
+    },
+
+    // 2. Aspectos Positivos apontados por Nicole
+    aspectos_positivos: {
+      check: (q) => (q.includes('positivo') || q.includes('positivos') || q.includes('vantagem') || q.includes('vantagens') || q.includes('pontos fortes')) && (q.includes('artigo') || q.includes('fichamento') || q.includes('sistema') || q.includes('bradac') || q.includes('bradáč') || q.includes('mycin') || q.includes('neomycin') || q.includes('tutores')),
+      reply: 'Nos fichamentos, Nicole destacou aspectos positivos essenciais em cada sistema:\n\n' +
+        '• **Bradáč et al. (2022):** A proposta de personalização contínua do percurso pedagógico, o acompanhamento longitudinal do estudante ao longo do tempo (modificando o plano conforme a necessidade) e a aplicação da **lógica fuzzy** para modelar graus de aprendizado sem dicotomias rígidas.\n\n' +
+        '• **MYCIN (1978):** A capacidade pioneira de processar **incertezas e incompletudes** dos dados clínicos com base em probabilidades e a sua **explicabilidade** — permitindo ao médico auditar a linha de raciocínio da máquina através de perguntas *HOW* (como concluiu) e *WHY* (por que solicitou tal dado).\n\n' +
+        '• **NEOMYCIN (1981):** A demonstração clara de que apenas acumular dados e regras não basta para reproduzir um especialista: evidenciou a necessidade de modelar as **estratégias cognitivas e a formulação de hipóteses** do raciocínio humano.'
+    },
+
+    // 3. Aspectos Negativos e Limitações apontados por Nicole
+    aspectos_negativos: {
+      check: (q) => (q.includes('negativo') || q.includes('negativos') || q.includes('desvantagem') || q.includes('desvantagens') || q.includes('limitaç') || q.includes('limitac') || q.includes('crítica') || q.includes('critica') || q.includes('engessa')) && (q.includes('artigo') || q.includes('fichamento') || q.includes('sistema') || q.includes('bradac') || q.includes('bradáč') || q.includes('mycin') || q.includes('neomycin') || q.includes('tutores')),
+      reply: 'Como crítica e ponderação nos fichamentos, Nicole observou limitações estruturais relevantes:\n\n' +
+        '• **Rigidez dos Sistemas Especialistas:** Tanto no Bradáč quanto no MYCIN, a arquitetura clássica baseada em regras rígidas engessa a atualização do conhecimento e dificulta a expansão do sistema para novos domínios ou cursos.\n\n' +
+        '• **Barreira de Tradução (MYCIN):** A necessidade de mediação entre o especialista humano (médico) e o programador para traduzir o saber clínico em código formal.\n\n' +
+        '• **Simplificação Excessiva do Conhecimento Tácito (NEOMYCIN):** Mesmo reestruturado, o sistema permanece refém de regras formais, arriscando simplificar em demasia um processo que envolve experiência, julgamento e contexto (em paralelo ao pensamento projetual analisado por Bryan Lawson).\n\n' +
+        '• **Validações Empíricas Restritas:** Os artigos reconhecem aplicações limitadas a cenários específicos (ex.: inglês instrumental no Bradáč) sem ampla validação generalizável.'
+    },
+
+    // 4. Artigo Bradáč et al. (2022) em detalhe
+    artigo_bradac: {
+      check: (q) => q.includes('bradac') || q.includes('bradáč') || (q.includes('moodle') && (q.includes('artigo') || q.includes('fichamento') || q.includes('estudo'))),
+      reply: '**Artigo: Bradáč et al. (2022) — Applied Sciences**\n\n' +
+        '• **Título:** *Design of an Intelligent Tutoring System to Create a Personalized Study Plan Using Expert Systems*\n' +
+        '• **Proposta:** Desenvolvimento de um Sistema Tutor Inteligente (ITS) dentro do Moodle que elabora e adapta planos de estudo personalizados considerando o desempenho contínuo e preferências sensoriais (modelo VARK) do aluno.\n' +
+        '• **Tecnologia:** Utiliza **lógica fuzzy** para lidar com níveis graduais de aprendizagem e minimizar a necessidade de intervenção manual do tutor.\n' +
+        '• **Contribuição para a pesquisa de Nicole:** Inspirou a ideia de que regras de categorização para perfis de estudantes podem ser transpostas para definir diretrizes e regras de categorização de **projetos arquitetônicos** em um assistente de escritório.'
+    },
+
+    // 5. Artigo MYCIN (Van Melle, 1978) em detalhe
+    artigo_mycin: {
+      check: (q) => q.includes('mycin') && !q.includes('neomycin'),
+      reply: '**Artigo: MYCIN — William van Melle (1978) — Int. Journal of Man-Machine Studies**\n\n' +
+        '• **Título:** *The Structure of the MYCIN System*\n' +
+        '• **Proposta:** Descreve a arquitetura pioneira do MYCIN para apoiar médicos no diagnóstico e terapia de infecções bacterianas graves sob condições de dados clínicos incompletos e incertos.\n' +
+        '• **Estrutura:** Separação entre base de conhecimento (regras "Se, Então" e triplas objeto-atributo-valor com fatores de certeza de -1 a +1) e programa de consulta (motor de inferência), além do programa de explicação (HOW e WHY).\n' +
+        '• **Contribuição para a pesquisa de Nicole:** A cadeia lógica *informações → avaliação → regras → decisão → adaptação* serviu de referência para estruturar o fluxo de consulta a dados precisos de modelos BIM.'
+    },
+
+    // 6. Artigo NEOMYCIN (Clancey & Letsinger, 1981) em detalhe
+    artigo_neomycin: {
+      check: (q) => q.includes('neomycin') || q.includes('clancey') || q.includes('letsinger') || q.includes('guidon'),
+      reply: '**Artigo: NEOMYCIN — William J. Clancey & Reed Letsinger (1981/1982)**\n\n' +
+        '• **Título:** *NEOMYCIN: Reconfiguring A Rule-Based Expert System for Application to Teaching*\n' +
+        '• **Proposta:** Reconfiguração da base do MYCIN orientada à pedagogia médica integrada ao tutor inteligente GUIDON, buscando aproximar o sistema computacional do raciocínio estratégico e psicológico de um especialista humano.\n' +
+        '• **Conceito Chave:** Formulação de regras estratégicas não exaustivas e gerenciamento de um espaço de hipóteses clínicas.\n' +
+        '• **Contribuição para a pesquisa de Nicole:** O contraste entre o raciocínio médico (diagnóstico/convergente) e o do arquiteto (propositivo/criativo) reforçou a ideia de mapear a estrutura cognitiva investigativa especificamente na etapa de **análise** do projeto para instruir modelos de linguagem (LLMs).'
+    },
+
+    // 7. Bryan Lawson, Problemas Perniciosos e Etapas de Projeto
+    lawson_arquitetura: {
+      check: (q) => q.includes('lawson') || q.includes('bryan lawson') || q.includes('sintese') || q.includes('síntese') || q.includes('pernicioso') || q.includes('wicked') || (q.includes('avaliacao') && q.includes('projeto')),
+      reply: 'Com base na obra clássica de **Bryan Lawson (2011, *Como Arquitetos e Designers Pensam*)**, Nicole fundamenta uma premissa central de sua pesquisa:\n\n' +
+        '1. **O projeto como Problema Pernicioso (*Wicked Problem*):** O projeto arquitetônico envolve uma multiplicidade de variáveis humanas, sociais, contextuais e espaciais que jamais podem ser reduzidas a métricas estritamente matemáticas ou lineares.\n\n' +
+        '2. **Limites da IA na Síntese e na Avaliação:** A Inteligência Artificial **não** deve ser responsável pelas etapas de **síntese** (a concepção criativa em si) nem de **avaliação** (o julgamento de qualidade e mérito projetual), pois essas etapas exigem discernimento humano e responsabilidade de autoria.\n\n' +
+        '3. **O papel da IA na etapa de Análise:** A computação tem seu lugar ideal na etapa de **análise**, definida por Lawson como a *"investigação das relações na busca de algum padrão nas informações disponíveis e a classificação dos objetivos"* (p. 45). É aqui que o assistente IR-BIM + LLM de Nicole atua: minerando dados, organizando precedentes e identificando padrões para apoiar o arquiteto.'
+    },
+
+    // 8. Transposição Metodológica para o BIM e Creches
+    transposicao_bim: {
+      check: (q) => (q.includes('bim') || q.includes('ir-bim') || q.includes('creche') || q.includes('creches') || q.includes('escritorio') || q.includes('escritório') || q.includes('transposi')) && !q.includes('mestrado'),
+      reply: 'A transposição metodológica concebida por Nicole a partir dos sistemas especialistas e tutores inteligentes para o fluxo **IR-BIM** funciona assim:\n\n' +
+        '• **Base de Dados BIM do Escritório:** O assistente acessa arquivos BIM de projetos anteriores de escopo similar (por exemplo, creches e escolas infantis) desenvolvidos por um escritório de arquitetura.\n' +
+        '• **Consulta em Linguagem Natural:** O projetista, ao iniciar um novo projeto, pode consultar em linguagem natural as decisões projetuais tomadas no passado (dimensões, materiais, soluções espaciais adotadas).\n' +
+        '• **Ciclo Decisório:** *Informações no BIM → Avaliação → Regras de similaridade → Decisão (identificação e categorização) → Elaboração do novo projeto pelo arquiteto → Nova avaliação e sugestões de adaptação*.\n' +
+        'Dessa forma, o arquiteto pode resgatar facilmente o histórico decisório do escritório, optando por seguir ou adaptar as soluções conforme as novas demandas.'
+    },
+
+    // 9. Metodologia de Pesquisa (DSR)
+    metodologia_pesquisa: {
+      check: (q) => q.includes('metodologia') || q.includes('metodo') || q.includes('método') || q.includes('dsr') || q.includes('design science'),
+      reply: 'Nos fichamentos da disciplina de Tutores Inteligentes, Nicole identificou que as pesquisas analisadas (como Bradáč et al. e MYCIN) seguem a estrutura básica de uma **Design Science Research (DSR)**: expõem um problema do mundo real, propõem-se a resolvê-lo, concebem e descrevem um artefato tecnológico, implementam-no e buscam avaliá-lo em contexto prático.'
+    },
+
+    // 10. Visão Geral dos Artigos e Fichamentos
+    artigos_geral: {
+      check: (q) => (q.includes('artigo') || q.includes('artigos') || q.includes('fichamento') || q.includes('fichamentos') || q.includes('tutores inteligentes') || q.includes('disciplina') || q.includes('ppgi')) && (q.includes('o que') || q.includes('quais') || q.includes('abordado') || q.includes('conteudo') || q.includes('resumo') || q.includes('estudou') || q.includes('geral')),
+      reply: 'Na disciplina de **Tutores Inteligentes (PPGI/UFES)**, Nicole estudou e fichou 3 artigos fundamentais sobre sistemas computacionais aplicados ao raciocínio e ao ensino:\n\n' +
+        '1. **Bradáč et al. (2022) — Applied Sciences:** Sistema Tutor Inteligente no Moodle com lógica fuzzy e modelo VARK para criação de planos de estudo personalizados.\n' +
+        '2. **MYCIN — William van Melle (1978):** A estrutura clássica de sistemas especialistas baseados em regras para diagnóstico de doenças infecciosas e seu mecanismo de explicabilidade (HOW e WHY).\n' +
+        '3. **NEOMYCIN — Clancey & Letsinger (1981):** Reestruturação do MYCIN com modelagem de estratégias cognitivas para o tutor médico GUIDON.\n\n' +
+        '💡 Você pode me perguntar especificamente sobre:\n' +
+        '• As **dúvidas** e trechos não compreendidos em cada artigo;\n' +
+        '• Os **aspectos positivos** e **limitações/aspectos negativos** apontados por Nicole;\n' +
+        '• As conexões com a teoria de **Bryan Lawson** e a aplicação ao **BIM**.'
+    },
+
+    // 11. Dissertação de Mestrado
     dissertacao: {
-      keywords: ['mestrado', 'dissertação', 'dissertacao', 'pesquisa', 'tema', 'ir-bim', 'bim', 'llm', 'assistente', 'orientador', 'jarryer'],
+      check: (q) => q.includes('mestrado') || q.includes('dissertação') || q.includes('dissertacao') || q.includes('tema da pesquisa') || q.includes('pesquisa de mestrado') || q.includes('orientador') || q.includes('jarryer'),
       reply: 'A pesquisa de mestrado de Nicole no PPGAU/UFES intitula-se **"Desenvolvimento de um assistente para projetos de arquitetura articulando um framework IR-BIM e um modelo de linguagem em um fluxo de trabalho"**, sob orientação do Prof. Dr. Jarryer Andrade de Martino no Grupo TIP.'
     },
+
+    // 12. Laboratório Grupo TIP
     laboratorio: {
-      keywords: ['tip', 'laboratório', 'laboratorio', 'grupo tip', 'dau', 'pesquisa do grupo'],
+      check: (q) => q.includes('tip') || q.includes('laboratório') || q.includes('laboratorio') || q.includes('grupo tip') || q.includes('dau') || q.includes('pesquisa do grupo'),
       reply: 'O **Grupo TIP (Tecnologias Integradas ao Projeto)** do DAU/UFES pesquisa como as tecnologias digitais integram o processo projetual em CAAD. Suas áreas de ponta abrangem: sistemas generativos, projeto computacional, prototipagem rápida, fabricação digital, sistemas bioinspirados e realidades virtuais. Saiba mais em: http://tip.ufes.br/'
     },
-    lawson: {
-      keywords: ['lawson', 'bryan lawson', 'síntese', 'sintese', 'avaliação', 'avaliacao', 'análise', 'analise', 'pernicioso', 'wicked'],
-      reply: 'Com base em Bryan Lawson (2011, *Como Arquitetos e Designers Pensam*), Nicole fundamenta que a IA **não deve atuar nas etapas de síntese (criação) nem de avaliação**, pois o projeto arquitetônico é um *problema pernicioso (wicked problem)* com variáveis contextuais e humanas irredutíveis à matemática. O assistente computacional deve atuar especificamente na etapa de **análise**, extraindo padrões e organizando informações dos modelos BIM.'
-    },
-    fichamentos: {
-      keywords: ['fichamento', 'mycin', 'neomycin', 'bradac', 'bradáč', 'tutores', 'ppgi', 'moodle', 'fuzzy', 'guidon'],
-      reply: 'Na disciplina de Tutores Inteligentes (PPGI/UFES), Nicole realizou 3 fichamentos principais:\n- **Bradáč et al. (2022):** ITS no Moodle com lógica fuzzy e modelo VARK.\n- **MYCIN (Van Melle, 1978):** regras, fatores de certeza probabilísticos e explicabilidade (HOW/WHY).\n- **NEOMYCIN (Clancey & Letsinger, 1981):** regras estratégicas e modelagem cognitiva.\nConfira os resumos completos na aba **Tutores Inteligentes** no menu!'
-    },
+
+    // 13. Graduação e TCC
     graduacao: {
-      keywords: ['graduação', 'graduacao', 'tcc', 'dom joão batista', 'dom joao', 'habitabilidade', 'autoconstrução', 'autoconstrucao'],
+      check: (q) => q.includes('graduação') || q.includes('graduacao') || q.includes('tcc') || q.includes('dom joão batista') || q.includes('dom joao') || q.includes('habitabilidade') || q.includes('autoconstrução') || q.includes('autoconstrucao'),
       reply: 'O projeto de graduação (TCC) de Nicole na UFES foi: **"Avaliação de Habitações em Dom João Batista, Vila Velha - ES, e proposição de estratégias para a melhoria da habitabilidade nas autoconstruções"**.'
     },
+
+    // 14. Atuação Institucional (IAB-ES e CAU)
     institucional: {
-      keywords: ['iab', 'iab-es', 'conselheira', 'cau', 'trabalho', 'profissional'],
+      check: (q) => q.includes('iab') || q.includes('iab-es') || q.includes('conselheira') || q.includes('cau') || q.includes('trabalho') || q.includes('profissional'),
       reply: 'Nicole é **Conselheira Estadual do IAB-ES (Instituto de Arquitetos do Brasil - Departamento do Espírito Santo)** na gestão atual iniciada no fim de 2025, além de arquiteta e urbanista com registro ativo no CAU.'
     }
   };
 
   function getFallbackAnswer(question) {
-    const q = question.toLowerCase();
+    const q = question.toLowerCase().trim();
+
+    // Avalia os verificadores semânticos por ordem de especificidade
     for (const key in KNOWLEDGE_BASE) {
       const item = KNOWLEDGE_BASE[key];
-      if (item.keywords.some(kw => q.includes(kw))) {
+      if (item.check(q)) {
         return item.reply;
       }
     }
-    return 'Olá! Sou o assistente acadêmico virtual de Nicole Nicolini. Posso responder sobre a pesquisa de mestrado dela (IR-BIM + LLM no PPGAU/UFES), o Grupo TIP, sua atuação como Conselheira no IAB-ES e os artigos estudados na disciplina de Tutores Inteligentes (PPGI). Como posso ajudar?';
+
+    // Fallback amigável e informativo
+    return 'Olá! Sou o assistente acadêmico virtual de Nicole Nicolini. Posso detalhar a pesquisa de mestrado dela (IR-BIM + LLM no PPGAU/UFES), o Grupo TIP, sua atuação no IAB-ES e os conteúdos da disciplina de Tutores Inteligentes (incluindo **dúvidas registradas**, **aspectos positivos e negativos**, e a fundamentação em **Bryan Lawson**). Como posso ajudar?';
   }
 
   // Definição vetorial do Avatar do Assistente (Arquitetura + IA + Voz)
@@ -604,6 +706,7 @@
 
     // Checagem de status de conexão
     async function checkBackendStatus() {
+      // Se estiver rodando localmente (HTTP ou localhost), tenta conectar ao LM Studio / Python
       try {
         const testUrl = savedApiUrl.replace(/\/chat$/, '/status');
         const res = await fetch(testUrl, { method: 'GET', signal: AbortSignal.timeout(2000) });
@@ -611,13 +714,24 @@
           const data = await res.json();
           if (data.lm_studio_connected) {
             statusDot.className = 'status-dot online';
-            statusText.textContent = 'LM Studio Conectado';
+            statusText.textContent = 'LM Studio Conectado (IA Ativa)';
+            return;
+          } else {
+            statusDot.className = 'status-dot demo';
+            statusText.textContent = 'Ponte Ativa (LM Studio Offline)';
             return;
           }
         }
       } catch (err) {}
-      statusDot.className = 'status-dot demo';
-      statusText.textContent = 'Assistente Acadêmico (Web)';
+
+      // Se estiver no GitHub Pages com HTTPS (onde o navegador restringe Mixed Content a localhost)
+      if (window.location.protocol === 'https:') {
+        statusDot.className = 'status-dot demo';
+        statusText.textContent = 'Base Acadêmica (GitHub Pages)';
+      } else {
+        statusDot.className = 'status-dot demo';
+        statusText.textContent = 'Modo Autônomo Local';
+      }
     }
 
     // Auto-expandir textarea
@@ -755,7 +869,9 @@
           const data = await response.json();
           answer = data.reply || 'Não foi possível obter resposta.';
           if (data.source === 'lm_studio') {
-            sourceNote = 'Gerado via LM Studio Local';
+            sourceNote = 'Gerado via LM Studio (IA Ativa)';
+          } else {
+            sourceNote = 'Base de Conhecimento Acadêmica';
           }
         } else {
           throw new Error('Servidor retornou status ' + response.status);
