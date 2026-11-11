@@ -7,8 +7,8 @@ echo   Assistente Academico - Nicole De Mori Nicolini
 echo   (Chatbot com Avatar, Comando de Voz e LM Studio)
 echo ========================================================
 echo.
-echo [1/2] Abrindo seu site no navegador...
-start https://nicoledmn.github.io/
+echo [1/2] Abrindo seu site conectado ao LM Studio no navegador...
+start http://localhost:8000/
 echo.
 echo [2/2] Iniciando conexao com o LM Studio (porta 1234)...
 echo.
