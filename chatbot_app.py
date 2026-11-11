@@ -18,7 +18,7 @@ SERVER_PORT = int(os.environ.get("CHATBOT_PORT", "8000"))
 
 # Prompt de sistema com a base de conhecimento de Nicole De Mori Nicolini
 SYSTEM_PROMPT = """Voce e o Assistente Academico Virtual de Nicole De Mori Nicolini, integrado ao portfolio academico dela.
-Sua funcao e responder duvidas de visitantes, pesquisadores e avaliadores de forma educada, precisa e fundamentada.
+Sua funcao e responder duvidas de visitantes, pesquisadores e avaliadores de forma educada, precisa, aprofundada e fundamentada.
 
 DADOS DA PESQUISADORA NICOLE DE MORI NICOLINI:
 - Formacao: Arquiteta e Urbanista pela Universidade Federal do Espirito Santo (UFES).
@@ -30,22 +30,39 @@ DADOS DA PESQUISADORA NICOLE DE MORI NICOLINI:
 - Atuacao Institucional: Conselheira Estadual do IAB-ES (Instituto de Arquitetos do Brasil - Departamento do Espirito Santo), gestao atual desde o fim de 2025. Registro ativo no CAU.
 - Projeto de Graduacao (TCC): "Avaliacao de Habitacoes em Dom Joao Batista, Vila Velha - ES, e proposicao de estrategias para a melhoria da habitabilidade nas autoconstrucoes".
 
-DISCIPLINA TUTORES INTELIGENTES (PPGI/UFES):
-Nicole cursou a disciplina no Programa de Pos-Graduacao em Informatica e elaborou tres fichamentos centrais:
-1. Bradac et al. (2022) - "Design of an Intelligent Tutoring System to Create a Personalized Study Plan Using Expert Systems":
-   - Sistema no Moodle com logica fuzzy e modelo VARK para planos personalizados.
-   - Reflexao de Nicole fundamentada em Bryan Lawson (2011 - "Como Arquitetos e Designers Pensam"): a IA nao deve atuar na sintese (criacao) nem na avaliacao do projeto (que sao problemas perniciosos / wicked problems com raciocinio nao puramente matematico). O assistente atuara estritamente na etapa de ANALISE (busca de padroes e classificacao de objetivos em arquivos BIM).
-2. William van Melle (1978) - "The Structure of the MYCIN System":
-   - Sistema especialista para diagnosticos medicos com explicabilidade (HOW e WHY) e fatores de certeza probabilistica.
-   - Reflexao de Nicole: transposicao da logica de regras para dados precisos do BIM, gerando um ciclo metodologico de avaliacao, identificacao e sugestoes adaptativas.
-3. Clancey & Letsinger (1981/1982) - "NEOMYCIN: Reconfiguring A Rule-Based Expert System for Application to Teaching":
-   - Reconfiguracao com regras estrategicas para o tutor GUIDON ensinar estudantes de medicina.
-   - Reflexao de Nicole: contraste entre raciocinio medico (diagnostico, convergente) e arquitetonico (propositivo, criativo), propondo instruir LLMs a reproduzir as etapas investigativas da fase de analise do projeto.
+DISCIPLINA TUTORES INTELIGENTES (PPGI/UFES) — FICHAMENTOS DETALHADOS:
+Nicole cursou a disciplina no PPGI/UFES e produziu fichamentos analiticos rigorosos sobre tres artigos seminais:
+
+1. Bradac et al. (2022) — "Design of an Intelligent Tutoring System to Create a Personalized Study Plan Using Expert Systems" (Applied Sciences):
+   - Proposta: Sistema Tutor Inteligente (ITS) dentro do Moodle que elabora e adapta planos de estudo personalizados considerando o desempenho continuo e as preferencias sensoriais (modelo VARK) do estudante, usando logica fuzzy para modelar niveis de aprendizado com minima intervencao manual do tutor.
+   - Aspectos Positivos: Personalizacao dinamica, acompanhamento longitudinal do aluno e uso de logica fuzzy para lidar com incerteza e gradualidade.
+   - Aspectos Negativos / Limitacoes: A arquitetura de sistemas especialistas engessa a expansao para novos cursos; aplicacao restrita a um curso especifico (ingles instrumental) sem demonstracao de generalizacao.
+   - Duvidas e Trechos Nao Compreendidos: Nicole questionou como na etapa M1B o sistema afere o perfil VARK do aluno: perguntando diretamente? E se o aluno achar que aprende melhor por video, mas na verdade leitura/escrita for mais eficaz? Como conceber um teste objetivo confiavel para isso?
+   - Rastreio Metodologico: Design Science Research (DSR).
+
+2. William van Melle (1978) — "The Structure of the MYCIN System" (Int. Journal of Man-Machine Studies):
+   - Proposta: Estrutura e funcionamento do MYCIN, sistema especialista para apoiar medicos no diagnostico e tratamento de infeccoes graves sob informacoes imprecisas ou incompletas.
+   - Aspectos Positivos: Tratamento probabilistico da incerteza dos relatos clinicos e explicabilidade atraves dos comandos HOW (como concluiu) e WHY (por que solicitou tal informacao).
+   - Aspectos Negativos / Limitacoes: Dificuldade de atualizacao do conhecimento da base de regras e barreira dialogica entre o especialista (medico) e o programador (quem codifica a logica).
+   - Duvidas e Trechos Nao Compreendidos: Nicole questionou o funcionamento do motor de inferencia: se evidencias clinicas diferentes apontarem para direcoes opostas, como o motor lida com isso? Realiza uma soma probabilistica escolhendo a mais provavel ou pode inferir dois diagnosticos divergentes em paralelo para o mesmo paciente?
+   - Transposicao ao BIM: Nicole transpoe a cadeia de decisoes para dados do BIM: Informacoes (arquivos BIM) -> Avaliacao -> Regras -> Decisao (identificacao e categorizacao) -> Elaboracao de novo projeto -> Nova avaliacao -> Sugestoes adaptativas.
+
+3. Clancey & Letsinger (1981/1982) — "NEOMYCIN: Reconfiguring A Rule-Based Expert System for Application to Teaching" (IJCAI / Stanford):
+   - Proposta: Reconfiguracao da base do MYCIN para uso pedagogico no tutor GUIDON, ensinando estudantes de medicina a diagnosticar. Demonstra que ter regras estaticas nao basta; e necessario modelar as estrategias cognitivas e o gerenciamento do espaco de hipoteses.
+   - Aspectos Positivos: Diferenciacao crucial entre ter conhecimento e entender a estrutura estrategica de raciocinio para aplica-lo.
+   - Aspectos Negativos / Limitacoes: Continua dependente da formalizacao computacional, simplificando excessivamente a experiencia e o julgamento humano tacito.
+   - Duvidas e Trechos Nao Compreendidos: Nicole nao compreendeu como a reestruturacao em blocos beneficia o raciocinio pratico; como exatamente o sistema e consumido pelo GUIDON; e por que a pesquisa se restringiu ao ensino em vez de mante-lo como assistente de pratica clinica profissional.
+   - Contraste Cognitivo: O raciocinio medico e diagnostico/pragmatico; o do arquiteto e propositivo/criativo.
+
+FUNDAMENTACAO EM BRYAN LAWSON (2011 — "Como Arquitetos e Designers Pensam"):
+- O projeto de arquitetura e um "problema pernicioso" (wicked problem), com variaveis humanas, culturais e contextuais irredutiveis a modelos puramente matematicos.
+- Por isso, a IA e os computadores NAO devem atuar na SINTESE (criacao) nem na AVALIACAO (julgamento de qualidade do projeto).
+- O assistente atuara estritamente na etapa de ANALISE ("investigacao das relacoes na busca de algum padrao nas informacoes disponiveis e a classificacao dos objetivos", p. 45), resgatando precedentes em arquivos BIM de escritorios (como creches e escolas) para subsidiar o projetista humano, preservando integralmente a autoria e a criatividade.
 
 DIRETRIZES DE RESPOSTA:
-- Responda sempre em portugues claro, formal e academico.
-- Seja objetivo e enfatize o papel da IA como assistente de suporte analitico ao arquiteto, preservando a autoria e a criatividade humana.
-- Como suas respostas podem ser lidas em voz alta por sintese de voz (TTS) no navegador, mantenha frases bem articuladas, com pontuacao natural e sem excesso de marcadores tecnicos cifrados.
+- Responda sempre em portugues claro, formal, seguro e articulado academicamente.
+- Seja aprofundado e responda exatamente ao que for perguntado: se perguntarem sobre duvidas, cite as duvidas; se perguntarem sobre aspectos positivos/negativos, detalhe-os; se perguntarem sobre a dissertacao ou Lawson, fundamente com precisao.
+- Suas respostas podem ser lidas em voz alta por sintese de voz (TTS) no navegador; mantenha fluidez e boa pontuacao.
 """
 
 
@@ -101,11 +118,11 @@ class ChatbotHandler(BaseHTTPRequestHandler):
         self._set_cors_headers(204)
 
     def do_GET(self):
-        if self.path == "/" or self.path == "/chat":
-            self._set_cors_headers(200, "text/html; charset=utf-8")
-            html = self._render_standalone_chat_html()
-            self.wfile.write(html.encode("utf-8"))
-        elif self.path == "/api/status" or self.path == "/health":
+        clean_path = self.path.split("?")[0].lstrip("/")
+        if not clean_path:
+            clean_path = "index.html"
+
+        if clean_path in ("api/status", "health"):
             is_alive, info = check_lm_studio()
             self._set_cors_headers(200)
             res = {
@@ -116,9 +133,41 @@ class ChatbotHandler(BaseHTTPRequestHandler):
                 "error": None if is_alive else info
             }
             self.wfile.write(json.dumps(res, ensure_ascii=False).encode("utf-8"))
-        else:
-            self._set_cors_headers(404)
-            self.wfile.write(json.dumps({"error": "Rota nao encontrada"}).encode("utf-8"))
+            return
+
+        # Serve arquivos estaticos locais do site quando acessado via localhost
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        target_file = os.path.normpath(os.path.join(base_dir, clean_path))
+
+        if not target_file.startswith(base_dir):
+            self._set_cors_headers(403)
+            self.wfile.write(b"Acesso negado")
+            return
+
+        if os.path.isfile(target_file):
+            content_type = "application/octet-stream"
+            if target_file.endswith(".html"):
+                content_type = "text/html; charset=utf-8"
+            elif target_file.endswith(".css"):
+                content_type = "text/css; charset=utf-8"
+            elif target_file.endswith(".js"):
+                content_type = "application/javascript; charset=utf-8"
+            elif target_file.endswith(".svg"):
+                content_type = "image/svg+xml"
+            elif target_file.endswith(".json"):
+                content_type = "application/json; charset=utf-8"
+            elif target_file.endswith(".png"):
+                content_type = "image/png"
+            elif target_file.endswith(".jpg") or target_file.endswith(".jpeg"):
+                content_type = "image/jpeg"
+
+            self._set_cors_headers(200, content_type)
+            with open(target_file, "rb") as f:
+                self.wfile.write(f.read())
+            return
+
+        self._set_cors_headers(404)
+        self.wfile.write(json.dumps({"error": f"Arquivo '{clean_path}' nao encontrado"}, ensure_ascii=False).encode("utf-8"))
 
     def do_POST(self):
         if self.path == "/api/chat":
@@ -180,40 +229,92 @@ class ChatbotHandler(BaseHTTPRequestHandler):
     def _get_fallback_reply(self, message):
         """Fornece respostas baseadas na base de conhecimento se o LM Studio estiver temporariamente offline."""
         msg_lower = message.lower()
-        if "disserta" in msg_lower or "mestrado" in msg_lower or "pesquisa" in msg_lower or "tema" in msg_lower:
+
+        # 1. Dúvidas nos fichamentos
+        if any(w in msg_lower for w in ["duvida", "dúvida", "compreendeu", "nao compreendeu", "não compreendeu", "dificuldade", "incompreensao"]):
+            return (
+                "Em seus fichamentos na disciplina de Tutores Inteligentes (PPGI/UFES), Nicole formulou questoes e duvidas criticas muito claras:\n\n"
+                "1. **No artigo de Bradac et al. (2022 - ITS no Moodle):**\n"
+                "Nicole questionou como na etapa M1B o sistema afere o perfil sensorial (VARK) do aluno: *'Perguntando diretamente? Mas e se o aluno achar que aprende melhor por video, quando na verdade ler e escrever for mais adequado para ele? Penso que um teste para isso seria mais adequado, mas como formular um teste como esse?'*\n\n"
+                "2. **No artigo do MYCIN (Van Melle, 1978):**\n"
+                "A duvida incidiu sobre o motor de inferencia: *'Se informacoes diferentes dadas pelo paciente apontam para direcoes opostas, como o motor lida com isso? E uma soma matematica probabilistica que verifica a maior probabilidade, ou o motor poderia inferir dois diagnosticos simultaneos completamente diferentes a um mesmo paciente?'*\n\n"
+                "3. **No artigo do NEOMYCIN (Clancey & Letsinger, 1981):**\n"
+                "Nicole apontou nao entender como a arquitetura em blocos influencia positivamente no raciocinio, como o sistema seria usado pelo GUIDON, e por que a pesquisa restringiu o NEOMYCIN ao ensino em vez de mante-lo como assistente de pratica clinica profissional."
+            )
+
+        # 2. Aspectos Positivos
+        elif any(w in msg_lower for w in ["positivo", "positivos", "vantagem", "vantagens", "pontos fortes"]):
+            return (
+                "Nos fichamentos, Nicole destacou como aspectos positivos centrais:\n\n"
+                "• **Bradac et al. (2022):** A personalizacao do plano de estudos acompanhando o aluno ao longo do tempo e o uso de logica fuzzy para lidar com niveis graduais de aprendizado.\n"
+                "• **MYCIN (1978):** A capacidade de lidar com incertezas e dados incompletos por meio de probabilidades, e a explicabilidade das decisoes atraves de comandos HOW e WHY.\n"
+                "• **NEOMYCIN (1981):** A clara demonstracao de que apenas armazenar regras estaticas nao basta; e necessario entender e emular a estrutura estrategica do raciocinio clinico."
+            )
+
+        # 3. Aspectos Negativos / Limitações
+        elif any(w in msg_lower for w in ["negativo", "negativos", "desvantagem", "desvantagens", "limitac", "limitaç", "critica", "crítica", "engessa"]):
+            return (
+                "Como limitacoes e aspectos negativos, Nicole observou:\n\n"
+                "• **Rigidez computacional:** Tanto no Bradac quanto no MYCIN, a arquitetura baseada em regras engessa a inclusao de novos cursos e a atualizacao do conhecimento.\n"
+                "• **Barreira de traducao:** No MYCIN, a distancia entre o medico (detentor do saber especialista) e o programador (tradutor para codigo computacional).\n"
+                "• **Simplificacao excessiva:** No NEOMYCIN, o modelo continua refem de representacao formal, arriscando simplificar demais um processo que envolve julgamento tacito, experiencia e contexto."
+            )
+
+        # 4. Lawson e Projeto de Arquitetura
+        elif any(w in msg_lower for w in ["lawson", "bryan lawson", "sintese", "síntese", "pernicioso", "wicked", "avaliacao", "avaliação"]):
+            return (
+                "Com base em Bryan Lawson (2011, *Como Arquitetos e Designers Pensam*), Nicole defende que a IA **nao deve atuar nas etapas de sintese (criacao) nem de avaliacao**, "
+                "pois o projeto arquitetonico e um 'problema pernicioso' (wicked problem) regido por fatores humanos e contextuais que nao se reduzem a fatores puramente matematicos.\n\n"
+                "A IA deve atuar estritamente na etapa de **analise** ('investigacao das relacoes na busca de algum padrao nas informacoes disponiveis e a classificacao dos objetivos', p. 45), "
+                "organizando e minerando dados de modelos BIM para apoiar o arquiteto."
+            )
+
+        # 5. BIM e Creches
+        elif any(w in msg_lower for w in ["bim", "ir-bim", "creche", "creches", "escritorio", "escritório"]):
+            return (
+                "Na pesquisa de Nicole, o assistente acessa arquivos BIM de um escritorio para projetos de escopo semelhante (ex.: creches), "
+                "organizando uma base de dados para consulta em linguagem natural. Assim, o projetista consegue resgatar com clareza as decisoes "
+                "anteriores e optar por segui-las ou adapta-las no novo projeto."
+            )
+
+        # 6. Artigos em Geral / Tutores Inteligentes
+        elif any(w in msg_lower for w in ["artigo", "artigos", "tutores inteligentes", "ppgi", "disciplina", "fichamento", "fichamentos"]):
+            return (
+                "Na disciplina de Tutores Inteligentes (PPGI/UFES), Nicole produziu tres fichamentos detalhados:\n\n"
+                "1. **Bradac et al. (2022):** ITS no Moodle com logica fuzzy e modelo VARK para planos de estudo personalizados.\n"
+                "2. **MYCIN (William van Melle, 1978):** Sistema especialista para diagnostico com explicabilidade (HOW/WHY) e fatores de certeza.\n"
+                "3. **NEOMYCIN (Clancey & Letsinger, 1981):** Modelagem estrategica cognitiva aplicada ao tutor medico GUIDON.\n\n"
+                "Voce pode perguntar sobre as duvidas colocadas por Nicole, os pontos positivos/negativos ou as relacoes com sua pesquisa em BIM e Lawson!"
+            )
+
+        # 7. Dissertação de Mestrado
+        elif any(w in msg_lower for w in ["disserta", "mestrado", "pesquisa", "tema"]):
             return (
                 "A pesquisa de mestrado de Nicole no PPGAU/UFES intitula-se: "
                 "**'Desenvolvimento de um assistente para projetos de arquitetura articulando um framework IR-BIM e um modelo de linguagem em um fluxo de trabalho'**, "
                 "sob orientacao do Prof. Dr. Jarryer Andrade de Martino no Grupo TIP."
             )
-        elif "tip" in msg_lower or "laborat" in msg_lower or "grupo" in msg_lower:
+
+        # 8. Grupo TIP
+        elif any(w in msg_lower for w in ["tip", "laborat", "grupo"]):
             return (
                 "O **Grupo TIP (Tecnologias Integradas ao Projeto)** do DAU/UFES investiga teorias e tecnicas que integram "
                 "tecnologias digitais ao processo de projeto em CAAD. Entre suas areas estao: sistemas generativos, projeto computacional, "
                 "prototipagem rapida, fabricacao digital, sistemas bioinspirados e realidades virtuais. Saiba mais em: http://tip.ufes.br/"
             )
-        elif "lawson" in msg_lower or "sintese" in msg_lower or "analise" in msg_lower or "pernicioso" in msg_lower:
-            return (
-                "Com base em Bryan Lawson (2011, *Como Arquitetos e Designers Pensam*), Nicole defende que a IA nao deve atuar nas etapas de "
-                "**sintese** ou **avaliacao**, visto que o projeto arquitetonico e um 'problema pernicioso' (wicked problem) que nao se reduz a calculos matematicos. "
-                "O assistente computacional deve atuar exclusivamente na etapa de **analise**, identificando padroes e organizando informacoes dos modelos BIM."
-            )
-        elif "mycin" in msg_lower or "fichamento" in msg_lower or "van melle" in msg_lower or "bradac" in msg_lower:
-            return (
-                "Nos fichamentos da disciplina de Tutores Inteligentes (PPGI/UFES), Nicole estudou o Bradac et al. (ITS no Moodle com logica fuzzy), "
-                "o MYCIN (regras e explicabilidade em diagnosticos) e o NEOMYCIN (modelagem cognitiva e regras estrategicas). "
-                "Acesse a aba 'Tutores Inteligentes' no site para conferir os resumos completos e reflexoes!"
-            )
-        elif "iab" in msg_lower or "conselh" in msg_lower or "trabalho" in msg_lower:
+
+        # 9. IAB-ES
+        elif any(w in msg_lower for w in ["iab", "conselh", "trabalho", "cau"]):
             return (
                 "Nicole e Conselheira Estadual do **IAB-ES (Instituto de Arquitetos do Brasil - Departamento do Espirito Santo)** "
                 "na gestao atual iniciada no fim de 2025, alem de arquiteta com registro profissional ativo no CAU."
             )
+
         else:
             return (
-                "Ola! Sou o assistente academico da Nicole Nicolini. Posso responder sobre a pesquisa de mestrado dela no PPGAU/UFES "
-                "(assistente IR-BIM + LLM), o Grupo TIP, sua atuacao no IAB-ES e os artigos estudados na disciplina de Tutores Inteligentes (PPGI). "
-                "Em que posso ajudar?"
+                "Ola! Sou o assistente academico da Nicole Nicolini. Posso responder detalhadamente sobre a pesquisa de mestrado dela no PPGAU/UFES "
+                "(assistente IR-BIM + LLM), o Grupo TIP, sua atuacao no IAB-ES e os conteudos dos fichamentos da disciplina de Tutores Inteligentes "
+                "(incluindo as duvidas que ela anotou, pontos positivos/negativos e a articulacao com Bryan Lawson). Como posso ajudar?"
             )
 
     def _render_standalone_chat_html(self):
